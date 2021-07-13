@@ -726,6 +726,7 @@ impl Subsystem {
 
 /// The values for `memory.hight` or `pids.max`
 #[derive(Eq, PartialEq, Copy, Clone, Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum MaxValue {
     /// This value is returned when the text is `"max"`.
     Max,

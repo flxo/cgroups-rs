@@ -32,6 +32,7 @@ pub struct FreezerController {
 }
 
 /// The current state of the control group
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum FreezerState {
     /// The processes in the control group are _not_ frozen.
     Thawed,

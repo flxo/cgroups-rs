@@ -38,6 +38,7 @@ pub struct MemController {
 }
 
 #[derive(Default, Debug, PartialEq, Eq)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct SetMemory {
     pub low: Option<MaxValue>,
     pub high: Option<MaxValue>,
@@ -47,6 +48,7 @@ pub struct SetMemory {
 
 /// Controls statistics and controls about the OOM killer operating in this control group.
 #[derive(Default, Debug, PartialEq, Eq)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct OomControl {
     /// If true, the OOM killer has been disabled for the tasks in this control group.
     pub oom_kill_disable: bool,
@@ -87,6 +89,7 @@ fn parse_oom_control(s: String) -> Result<OomControl> {
 
 /// Contains statistics about the NUMA locality of the control group's tasks.
 #[derive(Default, Debug, PartialEq, Eq)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct NumaStat {
     /// Total amount of pages used by the control group.
     pub total_pages: u64,
@@ -302,6 +305,7 @@ fn parse_numa_stat(s: String) -> Result<NumaStat> {
 }
 
 #[derive(Default, Debug, PartialEq, Eq)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MemoryStat {
     pub cache: u64,
     pub rss: u64,
@@ -403,6 +407,7 @@ fn parse_memory_stat(s: String) -> Result<MemoryStat> {
 /// Contains statistics about the current usage of memory and swap (together, not seperately) by
 /// the control group's tasks.
 #[derive(Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct MemSwap {
     /// How many times the limit has been hit.
     pub fail_cnt: u64,
@@ -417,6 +422,7 @@ pub struct MemSwap {
 /// State of and statistics gathered by the kernel about the memory usage of the control group's
 /// tasks.
 #[derive(Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Memory {
     /// How many times the limit has been hit.
     pub fail_cnt: u64,
@@ -461,6 +467,7 @@ pub struct Memory {
 /// The current state of and gathered statistics about the kernel's memory usage for TCP-related
 /// data structures.
 #[derive(Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Tcp {
     /// How many times the limit has been hit.
     pub fail_cnt: u64,
@@ -479,6 +486,7 @@ pub struct Tcp {
 /// these tasks if it would think that the limits here would be violated. It's important to note
 /// that interrupts in particular might not be able to enforce these limits.
 #[derive(Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Kmem {
     /// How many times the limit has been hit.
     pub fail_cnt: u64,

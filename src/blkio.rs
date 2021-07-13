@@ -31,6 +31,7 @@ pub struct BlkIoController {
 }
 
 #[derive(Eq, PartialEq, Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 /// Per-device information
 pub struct BlkIoData {
     /// The major number of the device.
@@ -42,6 +43,7 @@ pub struct BlkIoData {
 }
 
 #[derive(Eq, PartialEq, Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 /// Per-device activity from the control group.
 pub struct IoService {
     /// The major number of the device.
@@ -61,6 +63,7 @@ pub struct IoService {
 }
 
 #[derive(Eq, PartialEq, Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 /// Per-device activity from the control group.
 /// Only for cgroup v2
 pub struct IoStat {
@@ -203,6 +206,7 @@ fn parse_blkio_data(s: String) -> Result<Vec<BlkIoData>> {
 /// Current state and statistics about how throttled are the block devices when accessed from the
 /// controller's control group.
 #[derive(Default, Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct BlkIoThrottle {
     /// Statistics about the bytes transferred between the block devices by the tasks in this
     /// control group.
@@ -238,6 +242,7 @@ pub struct BlkIoThrottle {
 
 /// Statistics and state of the block devices.
 #[derive(Default, Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct BlkIo {
     /// The number of BIOS requests merged into I/O requests by the control group's tasks.
     pub io_merged: Vec<IoService>,

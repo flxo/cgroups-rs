@@ -33,6 +33,7 @@ pub struct CpuSetController {
 }
 
 /// The current state of the `cpuset` controller for this control group.
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct CpuSet {
     /// If true, no other control groups can share the CPUs listed in the `cpus` field.
     pub cpu_exclusive: bool,

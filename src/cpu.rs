@@ -36,6 +36,7 @@ pub struct CpuController {
 
 /// The current state of the control group and its processes.
 #[derive(Debug)]
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Cpu {
     /// Reports CPU time statistics.
     ///

@@ -27,6 +27,7 @@ pub struct CpuAcctController {
 }
 
 /// Represents the statistics retrieved from the control group.
+#[cfg_attr(feature="serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct CpuAcct {
     /// Divides the time used by the tasks into `user` time and `system` time.
     pub stat: String,
